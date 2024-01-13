@@ -4,6 +4,10 @@ runs:
   steps:
   - name: Build examples/toolchains/conan_toolchain
     run: |-
+      cat ~/.profile
+      cat ~/.bashrc
+      echo $PATH
+      conan --help
       cd examples/toolchains/conan_toolchain
       $RUNNER_TEMP/artifacts/buck2 init
       cp -r ../../../prelude prelude
@@ -11,4 +15,4 @@ runs:
       PATH="$RUNNER_TEMP/artifacts:$PATH" $RUNNER_TEMP/artifacts/buck2 run //cpp/conan:update -v 2
       $RUNNER_TEMP/artifacts/buck2 build //... -v 2
       $RUNNER_TEMP/artifacts/buck2 test //... -v 2
-    shell: bash
+    shell: bash -l {0}

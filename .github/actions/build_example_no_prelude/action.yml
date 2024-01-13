@@ -6,4 +6,4 @@ runs:
     run: |-
       cd examples/no_prelude
       $RUNNER_TEMP/artifacts/buck2 build //... -v 2
-    shell: bash
+    shell: bash -l {0}
